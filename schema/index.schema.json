@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Boni92i/pinkerton-vault/schema/index.schema.json",
+  "title": "Pinkerton Vault machine index",
+  "description": "The structure of index.json, the machine-readable map of this repository.",
+  "type": "object",
+  "required": [
+    "name",
+    "version",
+    "updated",
+    "base",
+    "entrypoint",
+    "human_entrypoint",
+    "agent_instructions",
+    "document_count",
+    "documents"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "name": { "type": "string" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "updated": { "type": "string", "format": "date" },
+    "base": { "type": "string", "format": "uri" },
+    "entrypoint": { "type": "string" },
+    "human_entrypoint": { "type": "string" },
+    "agent_instructions": { "type": "string" },
+    "document_count": { "type": "integer", "minimum": 0 },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "path", "kind", "version", "status", "sha256"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "path": { "type": "string" },
+          "kind": {
+            "enum": ["entrypoint", "doc", "spec", "schema", "reference", "test-vector", "example"]
+          },
+          "version": { "type": "string" },
+          "status": { "enum": ["stable", "draft", "deprecated"] },
+          "audience": { "type": "array", "items": { "type": "string" } },
+          "updated": { "type": "string", "format": "date" },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "depends_on": { "type": "array", "items": { "type": "string" } },
+          "summary": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Boni92i/pinkerton-vault/schema/recovery-code.schema.json",
+  "title": "Recovery code",
+  "description": "The 12-symbol, 60-bit code the user owns. Hyphens are canonical; normalization folds the characters that look alike.",
+  "type": "object",
+  "required": ["code"],
+  "additionalProperties": false,
+  "properties": {
+    "code": {
+      "type": "string",
+      "pattern": "^[0-9A-HJKMNP-TV-Z]{4}-[0-9A-HJKMNP-TV-Z]{4}-[0-9A-HJKMNP-TV-Z]{4}$",
+      "description": "Canonical display form, uppercase, with hyphens. Note: the alphabet excludes I, L, O and U."
+    }
+  },
+  "examples": [
+    { "code": "ABCD-EFGH-JKMN" }
+  ],
+  "$comment": "The pattern is a display-form check. A reader MUST normalize first (uppercase, strip separators, O->0, I/L->1, U->V) and then validate the 12 normalized symbols."
+}

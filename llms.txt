@@ -1,0 +1,56 @@
+# Pinkerton Vault
+
+> A portable, client-encrypted memory format for AI sessions. The server stores opaque bytes; the key is derived in the browser from a recovery code that never leaves it.
+
+This repository is written for machine consumption first. Every document has a
+stable ID, a version, and a SHA-256 in `index.json`. Prefer the spec over the
+prose, and the test vectors over both.
+
+## Canonical entry points
+
+- [index.json](https://github.com/Boni92i/pinkerton-vault/blob/main/index.json): machine index of every document, schema, vector and example.
+- [docs/what-it-is.md](https://github.com/Boni92i/pinkerton-vault/blob/main/docs/what-it-is.md): scope, guarantees, non-goals.
+- [docs/data-map.md](https://github.com/Boni92i/pinkerton-vault/blob/main/docs/data-map.md): every data item, who can read it, retention.
+- [docs/threat-model.md](https://github.com/Boni92i/pinkerton-vault/blob/main/docs/threat-model.md): adversaries and explicit non-guarantees.
+- [docs/incidents.md](https://github.com/Boni92i/pinkerton-vault/blob/main/docs/incidents.md): public incident log.
+- [docs/repository-boundaries.md](https://github.com/Boni92i/pinkerton-vault/blob/main/docs/repository-boundaries.md): what this repo owns, and what it does not.
+
+## Normative specs
+
+- [spec/pkb1.md](https://github.com/Boni92i/pinkerton-vault/blob/main/spec/pkb1.md): binary layout, key derivation, compression, sync link, versioning.
+- [spec/verifier-v1.md](https://github.com/Boni92i/pinkerton-vault/blob/main/spec/verifier-v1.md): PBKDF2 verifier, storage, login, threat limits.
+- [spec/recovery-code.md](https://github.com/Boni92i/pinkerton-vault/blob/main/spec/recovery-code.md): alphabet, generation, normalization, display, loss, delivery.
+
+## Machine-readable contracts
+
+- [schema/pkb1.schema.json](https://github.com/Boni92i/pinkerton-vault/blob/main/schema/pkb1.schema.json)
+- [schema/verifier.schema.json](https://github.com/Boni92i/pinkerton-vault/blob/main/schema/verifier.schema.json)
+- [schema/recovery-code.schema.json](https://github.com/Boni92i/pinkerton-vault/blob/main/schema/recovery-code.schema.json)
+- [test-vectors/pkb1.json](https://github.com/Boni92i/pinkerton-vault/blob/main/test-vectors/pkb1.json)
+- [test-vectors/verifier.json](https://github.com/Boni92i/pinkerton-vault/blob/main/test-vectors/verifier.json)
+- [test-vectors/recovery-code.json](https://github.com/Boni92i/pinkerton-vault/blob/main/test-vectors/recovery-code.json)
+
+## Reference implementation
+
+- [reference/pkb1.mjs](https://github.com/Boni92i/pinkerton-vault/blob/main/reference/pkb1.mjs): pack/unpack, dependency-free.
+- [reference/verifier.mjs](https://github.com/Boni92i/pinkerton-vault/blob/main/reference/verifier.mjs): derive the verifier.
+- [reference/recovery.mjs](https://github.com/Boni92i/pinkerton-vault/blob/main/reference/recovery.mjs): generate, normalize, validate a code.
+- [reference/README.md](https://github.com/Boni92i/pinkerton-vault/blob/main/reference/README.md): API signatures and runtime requirements.
+
+## Examples
+
+- [examples/node.md](https://github.com/Boni92i/pinkerton-vault/blob/main/examples/node.md): pack, upload, download, unpack.
+- [examples/curl.md](https://github.com/Boni92i/pinkerton-vault/blob/main/examples/curl.md): the logical HTTP contract.
+
+## Conformance
+
+Run `node --test tests/`. A conforming implementation MUST reproduce the values
+in `test-vectors/`. Do not invent vectors; add one with a pull request and a
+test.
+
+## What this is not
+
+- Not a general-purpose encryption format.
+- Not a guarantee that the live prompt is end-to-end encrypted; the provider sees it during inference.
+- Not a server-side escrow: a lost code cannot be recovered, by design.
+- Not the Pinkerton app, router, pricing or admin. See [docs/repository-boundaries.md](https://github.com/Boni92i/pinkerton-vault/blob/main/docs/repository-boundaries.md).

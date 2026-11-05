@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-05",
+  "format": "PKB1",
+  "format_version": 1,
+  "verifier": "v1",
+  "app_commit": "023f8ad",
+  "app_deployment": "f3f726c3",
+  "bundle": "index-BG4z1CNY.js",
+  "bundle_sha256": "70208d90ef0db5d0a6bd825a2e256ccef670a08431969bb55ad4a828bd4333a1",
+  "notes": [
+    "The hosted app is private; this attestation ties the deployed bundle to the public format version.",
+    "The bundle hash is the SHA-256 of dist/assets/index-BG4z1CNY.js at deployment f3f726c3.",
+    "The public reference implementation is not byte-identical to the app bundle; conformance is defined by the test vectors."
+  ]
+}

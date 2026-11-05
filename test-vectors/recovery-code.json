@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "alphabet": "0123456789ABCDEFGHJKMNPQRSTVWXYZ",
+  "length": 12,
+  "entropy_bits": 60,
+  "vectors": [
+    {
+      "input": "abcd-efgh-jkmn",
+      "normalized": "ABCDEFGHJKMN",
+      "formatted": "ABCD-EFGH-JKMN",
+      "valid": true
+    },
+    {
+      "input": "O0I1L-U",
+      "normalized": "00111V",
+      "formatted": "0011-1V",
+      "valid": false
+    },
+    {
+      "input": "ABCD-EFGH",
+      "normalized": "ABCDEFGH",
+      "formatted": "ABCD-EFGH",
+      "valid": false
+    }
+  ]
+}

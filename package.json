@@ -1,0 +1,16 @@
+{
+  "name": "@pinkerton/vault",
+  "version": "1.0.0",
+  "description": "A portable, client-encrypted memory format for AI sessions.",
+  "type": "module",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test tests/",
+    "vectors": "node scripts/generate-vectors.mjs",
+    "index": "node scripts/build-index.mjs"
+  }
+}

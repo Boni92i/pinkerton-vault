@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use Pinkerton Vault, cite it as below."
+title: "Pinkerton Vault"
+abstract: "A portable, client-encrypted memory format for AI sessions: PKB1, verifier v1, the recovery-code format, a dependency-free reference implementation and deterministic test vectors."
+authors:
+  - name: "Pinkerton"
+type: software
+version: 1.0.0
+date-released: 2026-11-05
+url: "https://github.com/Boni92i/pinkerton-vault"
+license: MIT
+keywords:
+  - encryption
+  - privacy
+  - ai
+  - vault
+  - pkb1
+  - pbkdf2

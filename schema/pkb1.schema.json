@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Boni92i/pinkerton-vault/schema/pkb1.schema.json",
+  "title": "PKB1 plaintext payload",
+  "description": "The JSON object that is gzip-compressed (when available) and encrypted inside a PKB1 container.",
+  "type": "object",
+  "required": ["version", "exportedAt", "data"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": 1,
+      "description": "Payload version. A reader MUST reject an unknown version."
+    },
+    "exportedAt": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Milliseconds since the Unix epoch."
+    },
+    "data": {
+      "type": "object",
+      "description": "Workspace entries. Values are strings or null. Unknown keys MUST be preserved.",
+      "additionalProperties": {
+        "type": ["string", "null"]
+      }
+    }
+  },
+  "examples": [
+    {
+      "version": 1,
+      "exportedAt": 1762345678901,
+      "data": {
+        "pinkerton-chat-messages": "[{\"role\":\"user\",\"content\":\"hello\"}]",
+        "pinkerton-conv-history": "[]",
+        "pinkerton-chat-display": "{\"density\":\"compact\"}",
+        "pinkerton-studio-history": null
+      }
+    }
+  ]
+}

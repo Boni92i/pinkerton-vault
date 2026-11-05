@@ -1,0 +1,168 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Pinkerton Vault API",
+    "version": "1.0.0",
+    "description": "Logical HTTP contract for storing and retrieving PKB1 blobs. The hosted Pinkerton service maps these operations to its internal RPCs. The server stores opaque bytes; it never receives the recovery code or the AES key.",
+    "x-status": "design",
+    "x-format": "PKB1",
+    "x-verifier": "v1"
+  },
+  "servers": [
+    { "url": "https://vault.example.com", "description": "Example host; the hosted service uses its own base URL." }
+  ],
+  "paths": {
+    "/v1/verifiers": {
+      "post": {
+        "summary": "Register the verifier for a session",
+        "description": "The client sends the verifier, never the code. A second registration with a different verifier must fail with 409.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/VerifierRegistration" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Registered",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Ok" } }
+            }
+          },
+          "409": { "description": "A different verifier is already sealed" },
+          "429": { "description": "Rate limited" }
+        }
+      }
+    },
+    "/v1/login": {
+      "post": {
+        "summary": "Resolve a verifier to an anon_id",
+        "description": "Returns the anon_id, or 401. The verifier is a bearer credential; it does not decrypt the vault.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/VerifierLogin" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resolved",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/LoginResult" } }
+            }
+          },
+          "401": { "description": "Unknown verifier" },
+          "429": { "description": "Rate limited" }
+        }
+      }
+    },
+    "/v1/vault/{anon_id}": {
+      "parameters": [
+        {
+          "name": "anon_id",
+          "in": "path",
+          "required": true,
+          "schema": { "type": "string", "minLength": 8 },
+          "description": "Session identifier. A bearer credential in practice."
+        }
+      ],
+      "put": {
+        "summary": "Store an encrypted PKB1 blob",
+        "description": "The body is standard base64 of the PKB1 bytes. The server MUST NOT parse, log or decrypt it.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/VaultPut" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Stored",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/VaultStored" } }
+            }
+          },
+          "413": { "description": "Blob exceeds the server cap" }
+        }
+      },
+      "get": {
+        "summary": "Read the encrypted PKB1 blob",
+        "responses": {
+          "200": {
+            "description": "The stored blob",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/VaultStored" } }
+            }
+          },
+          "404": { "description": "No blob for this anon_id" }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "VerifierRegistration": {
+        "type": "object",
+        "required": ["anon_id", "verifier"],
+        "additionalProperties": false,
+        "properties": {
+          "anon_id": { "type": "string", "minLength": 8 },
+          "verifier": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{43}$",
+            "description": "Unpadded base64url of the 32-byte PBKDF2-SHA256 verifier."
+          }
+        }
+      },
+      "VerifierLogin": {
+        "type": "object",
+        "required": ["verifier"],
+        "additionalProperties": false,
+        "properties": {
+          "verifier": { "type": "string", "pattern": "^[A-Za-z0-9_-]{43}$" }
+        }
+      },
+      "VaultPut": {
+        "type": "object",
+        "required": ["blob_base64"],
+        "additionalProperties": false,
+        "properties": {
+          "blob_base64": {
+            "type": "string",
+            "contentEncoding": "base64",
+            "description": "The PKB1 bytes, standard base64 encoded."
+          }
+        }
+      },
+      "VaultStored": {
+        "type": "object",
+        "required": ["blob_base64", "updated_at"],
+        "additionalProperties": false,
+        "properties": {
+          "blob_base64": { "type": "string", "contentEncoding": "base64" },
+          "size": { "type": "integer", "minimum": 0 },
+          "updated_at": { "type": "string", "format": "date-time" }
+        }
+      },
+      "Ok": {
+        "type": "object",
+        "required": ["ok"],
+        "additionalProperties": false,
+        "properties": { "ok": { "const": true } }
+      },
+      "LoginResult": {
+        "type": "object",
+        "required": ["anon_id"],
+        "additionalProperties": false,
+        "properties": { "anon_id": { "type": "string", "minLength": 8 } }
+      }
+    }
+  },
+  "x-implementation": "The hosted Pinkerton service maps these operations to internal Supabase RPCs. This contract is a design for third-party implementations; it is not a guarantee that the hosted service exposes these exact paths."
+}

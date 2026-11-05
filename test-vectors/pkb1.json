@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "key_salt": "pinkerton-vault-recovery-v1",
+  "key_iterations": 100000,
+  "note": "The raw vector is byte-exact for writers. The gzip vector is a reader vector: gzip output may differ between implementations.",
+  "vectors": [
+    {
+      "name": "raw",
+      "compress": false,
+      "code": "ABCD-EFGH-JKMN",
+      "iv": "AAECAwQFBgcICQoL",
+      "payload": {
+        "version": 1,
+        "exportedAt": 1762345678901,
+        "data": {
+          "pinkerton-chat-messages": "[{\"role\":\"user\",\"content\":\"hello\"}]",
+          "pinkerton-conv-history": "[]",
+          "pinkerton-chat-display": "{\"density\":\"compact\"}",
+          "pinkerton-studio-history": null
+        }
+      },
+      "blob_base64": "UEtCMQABAgMEBQYHCAkKCxCeoJ8z98P+fHVJNWAzwRqR2e3cglGDSTw1BBxlZnoW99bYFjS14Njb4bHqa+f2H3zsUKGp2ntpFsLBEoZMClMaOm584WInsSi2B/i9IruKwN9ZE6gVyddderS/LXnZB40njYOeRLEwo822s/ipIUxpMActO+q15fTk31/IFXG8Se3ykmARBZ1ug2+K/XlqsSMbtADueGAsN/bw0uSV5pI24NTpZHMfHOoeUy8VOmocXF4JGuZA/0kw5lSp8iIz+hwyovbDQaG5bs2WTDeIkrmLeZkQ9n2Mxh3flQGM/lWsGcxzfjjPQbm8oWcN/4gFT1Iv0mUSH3y3WOTjxg==",
+      "blob_sha256": "cf8da3fec51e1a683a31eb65990ea1e59d4f3e9615ca9b280da33c8f6d8efe63"
+    },
+    {
+      "name": "gzip",
+      "compress": true,
+      "code": "ABCD-EFGH-JKMN",
+      "iv": "AAECAwQFBgcICQoL",
+      "payload": {
+        "version": 1,
+        "exportedAt": 1762345678901,
+        "data": {
+          "pinkerton-chat-messages": "[{\"role\":\"user\",\"content\":\"hello\"}]",
+          "pinkerton-conv-history": "[]",
+          "pinkerton-chat-display": "{\"density\":\"compact\"}",
+          "pinkerton-studio-history": null
+        }
+      },
+      "blob_base64": "UEtCMQABAgMEBQYHCAkKC3Q33vpBhKqRElQuyXcfZlLxsk8Tq6iKuSHhDSz15Ks3c9Ax5rYMWdYmmFUYRf5vHW3/neNDrEVO+DLRFstSKOaR70JgNr6/I3LWELZ6LZ7LDLzVAdMWQJjPva9d+eBkm092uYlkRb5o+U7gvoN12LSX4ZiBJNMcu5NhW0G5my1AVB3JF6AiLcyW1KZbDyYvthADUphaS/83izpnO9LmlgSYJZ1OQgA0r5Ap005sGDY3Gi6xBzH8COmA1Xbe+NE=",
+      "blob_sha256": "a57050eb88e578cd3d4b63c2e21f82405cbd9108ecb74ed2160814c4bbed8255",
+      "writer_note": "informative: a writer MAY produce different compressed bytes"
+    }
+  ]
+}

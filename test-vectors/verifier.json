@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "kdf": "PBKDF2-SHA256",
+  "salt": "pinkerton-recovery-verifier-v1",
+  "iterations": 200000,
+  "derived_bits": 256,
+  "encoding": "base64url-unpadded",
+  "vectors": [
+    {
+      "code": "ABCD-EFGH-JKMN",
+      "verifier": "v3ED0zBtBPGpYG6XU8miLqxBrlOWW3BB-sWCXjO4beA"
+    }
+  ]
+}

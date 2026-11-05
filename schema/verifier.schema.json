@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Boni92i/pinkerton-vault/schema/verifier.schema.json",
+  "title": "Recovery verifier record",
+  "description": "The server-side record that identifies a session without storing the recovery code.",
+  "type": "object",
+  "required": ["anon_id", "code_hash", "code_version", "sealed_at"],
+  "additionalProperties": false,
+  "properties": {
+    "anon_id": {
+      "type": "string",
+      "minLength": 8,
+      "description": "Session identifier. Not a secret by itself, but a bearer credential in practice."
+    },
+    "code_hash": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{43}$",
+      "description": "Unpadded base64url of the 32-byte PBKDF2-SHA256 verifier."
+    },
+    "code_version": {
+      "const": 2,
+      "description": "2 = sealed (verifier only). 1 = legacy plaintext row during migration."
+    },
+    "sealed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the plaintext code was removed."
+    },
+    "code": {
+      "type": ["string", "null"],
+      "description": "Legacy plaintext only. MUST be null after sealing."
+    }
+  },
+  "examples": [
+    {
+      "anon_id": "00000000-0000-4000-8000-000000000000",
+      "code_hash": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "code_version": 2,
+      "sealed_at": "2026-11-05T20:00:00Z",
+      "code": null
+    }
+  ]
+}

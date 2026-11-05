@@ -1,0 +1,633 @@
+{
+  "name": "Pinkerton Vault",
+  "version": "1.0.0",
+  "updated": "2026-11-05",
+  "base": "https://github.com/Boni92i/pinkerton-vault",
+  "entrypoint": "llms.txt",
+  "human_entrypoint": "README.md",
+  "agent_instructions": "AGENTS.md",
+  "document_count": 34,
+  "documents": [
+    {
+      "id": "pinkerton-vault/agents",
+      "path": "AGENTS.md",
+      "kind": "entrypoint",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "agents",
+        "instructions"
+      ],
+      "depends_on": [],
+      "summary": "Read [llms.txt](llms.txt) first. Then [index.json](index.json). Then the normative spec for the task. Do not start from the README prose if a spec exists.",
+      "sha256": "4a47f7ae37be8008b7cb89798bf125b9f55543d3d77e44e32941d6a03b7ebaf9"
+    },
+    {
+      "id": "pinkerton-vault/changelog",
+      "path": "CHANGELOG.md",
+      "kind": "entrypoint",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "human",
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "changelog"
+      ],
+      "depends_on": [],
+      "summary": "PKB1 format specification and JSON Schema.",
+      "sha256": "0e441324adbe281a65fad62c104433a20694a21a2ebf3dbf492a73185a8cab13"
+    },
+    {
+      "id": "pinkerton-vault/CITATION",
+      "path": "CITATION.cff",
+      "kind": "entrypoint",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "Citation metadata for the format.",
+      "sha256": "b982ad8dc3f417e0cc17c57ab84b50ddb6f5c55c449299e423c041a38d1709b8"
+    },
+    {
+      "id": "pinkerton-vault/contributing",
+      "path": "CONTRIBUTING.md",
+      "kind": "entrypoint",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "human",
+        "agent",
+        "contributor"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "contributing",
+        "governance"
+      ],
+      "depends_on": [],
+      "summary": "This repository is agent-first. A change is accepted when a machine can check it.",
+      "sha256": "83ffb81b82116d013fe7b0a924db32084605cdf15362e72d1faff198539c2e1f"
+    },
+    {
+      "id": "pinkerton-vault/LICENSE",
+      "path": "LICENSE",
+      "kind": "entrypoint",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "MIT license text (code), with a note on CC BY 4.0 documentation.",
+      "sha256": "148879fe70099c88cab920b7caea7d93ea13a89dbbd5d611ee0eebcedfe9a64c"
+    },
+    {
+      "id": "pinkerton-vault/licensing",
+      "path": "LICENSING.md",
+      "kind": "entrypoint",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "human",
+        "agent",
+        "legal"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "license"
+      ],
+      "depends_on": [],
+      "summary": "You may use, modify and redistribute the code, including commercially, with attribution and without warranty.",
+      "sha256": "6c00cca5008943592c2293d37f5a5b25c36d574574898a8a9fbbeaaa161f2114"
+    },
+    {
+      "id": "pinkerton-vault/readme",
+      "path": "README.md",
+      "kind": "entrypoint",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "human",
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "overview",
+        "entrypoint"
+      ],
+      "depends_on": [],
+      "summary": "A portable, client-encrypted memory for AI sessions.",
+      "sha256": "59cbece96981ff8500203b2dd32d161b9459cc2de5cb45c0ac96ec9a02acf100"
+    },
+    {
+      "id": "pinkerton-vault/security",
+      "path": "SECURITY.md",
+      "kind": "entrypoint",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "human",
+        "agent",
+        "researcher"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "security",
+        "disclosure"
+      ],
+      "depends_on": [],
+      "summary": "Do not open a public issue for a vulnerability. Use GitHub's private Report a vulnerability flow (Security Advisories) on this repository.",
+      "sha256": "07b12f85df36bc8e5e0964ebe1857739979067c959bc163c25c39eb46780b27e"
+    },
+    {
+      "id": "pinkerton-vault/docs/data-map",
+      "path": "docs/data-map.md",
+      "kind": "doc",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "human",
+        "agent",
+        "auditor"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "data",
+        "privacy",
+        "retention"
+      ],
+      "depends_on": [
+        "pinkerton-vault/spec/pkb1",
+        "pinkerton-vault/spec/verifier-v1"
+      ],
+      "summary": "Every item below is either stored by the browser, stored by the hosted service, or sent to a model provider. \"Server\" means the hosted Pinkerton service (Supabase + edge functions + Cloudflare). The open-source PKB1 format does not by itsel",
+      "sha256": "b142e093c6a756cf8b8f5d703f72bc2619beef5576abbb491e7a3d8a9ab0361d"
+    },
+    {
+      "id": "pinkerton-vault/docs/incidents",
+      "path": "docs/incidents.md",
+      "kind": "doc",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "human",
+        "agent",
+        "auditor"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "incidents",
+        "transparency"
+      ],
+      "depends_on": [
+        "pinkerton-vault/spec/verifier-v1"
+      ],
+      "summary": "Every entry has a stable ID, a date, a status and a source. A correction is recorded in the entry, never written over it. If a fact is disputed, both accounts stay in the entry.",
+      "sha256": "db1fdcf76484efa08f1e493200fb4a866a0b5857039f927783a4ba7b76481545"
+    },
+    {
+      "id": "pinkerton-vault/docs/repository-boundaries",
+      "path": "docs/repository-boundaries.md",
+      "kind": "doc",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "human",
+        "agent",
+        "contributor"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "scope",
+        "governance"
+      ],
+      "depends_on": [],
+      "summary": "This repository is the public artifact. It is deliberately smaller than the product. A change that belongs to another repository should go there, not here.",
+      "sha256": "ff3e367240d375c52ffae4e4aa3a362eed29e3f2cf25cc7f6eb795d638762c8c"
+    },
+    {
+      "id": "pinkerton-vault/docs/threat-model",
+      "path": "docs/threat-model.md",
+      "kind": "doc",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "human",
+        "agent",
+        "auditor"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "security",
+        "threats",
+        "limits"
+      ],
+      "depends_on": [
+        "pinkerton-vault/spec/pkb1",
+        "pinkerton-vault/spec/verifier-v1"
+      ],
+      "summary": "This document states what the vault protects against and, with equal weight, what it does not. A claim that is not in this file is not a guarantee.",
+      "sha256": "51843f71522df34b944be51e14d39ac66bc12e20f92d50fd7ce881698273eb78"
+    },
+    {
+      "id": "pinkerton-vault/docs/what-it-is",
+      "path": "docs/what-it-is.md",
+      "kind": "doc",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "human",
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "scope",
+        "guarantees",
+        "non-goals"
+      ],
+      "depends_on": [
+        "pinkerton-vault/spec/pkb1",
+        "pinkerton-vault/spec/verifier-v1"
+      ],
+      "summary": "A portable, client-encrypted memory for AI sessions: the user's browser packs and encrypts the workspace, the server stores opaque bytes, and the key is derived from a recovery code the server never sees.",
+      "sha256": "686644a596ece3145654cfcc3e041d64e14f64d2fcdbbe49fc88b5e22ed31229"
+    },
+    {
+      "id": "pinkerton-vault/examples",
+      "path": "examples/README.md",
+      "kind": "example",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "implementer",
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "examples"
+      ],
+      "depends_on": [],
+      "summary": "Runnable example.",
+      "sha256": "74a5c1b9fbe9956ee458b253354490960864dcae2855be3d26531e161ba1c9dc"
+    },
+    {
+      "id": "pinkerton-vault/examples/curl",
+      "path": "examples/curl.md",
+      "kind": "example",
+      "version": "1.0.0",
+      "status": "draft",
+      "audience": [
+        "implementer",
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "example",
+        "http",
+        "curl"
+      ],
+      "depends_on": [
+        "pinkerton-vault/schema/openapi"
+      ],
+      "summary": "Runnable example.",
+      "sha256": "9124edbad98d23419eb7ea250315cb5b3e6ea6e1dc772a929a3aa74104702f97"
+    },
+    {
+      "id": "pinkerton-vault/examples/node",
+      "path": "examples/node.md",
+      "kind": "example",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "implementer",
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "example",
+        "node",
+        "javascript"
+      ],
+      "depends_on": [],
+      "summary": "Runnable example.",
+      "sha256": "b4cd06e420baeecb799c7dce4218b5faec4214b5b091b3d1deb2ec1706ef1fb2"
+    },
+    {
+      "id": "pinkerton-vault/examples/node",
+      "path": "examples/node.mjs",
+      "kind": "example",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "Runnable example.",
+      "sha256": "86501efd9198797194429d766fa31175b63a2d02912631a8f6b1c6138d4ba86c"
+    },
+    {
+      "id": "pinkerton-vault/llms",
+      "path": "llms.txt",
+      "kind": "entrypoint",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "A portable, client-encrypted memory format for AI sessions. The server stores opaque bytes; the key is derived in the browser from a recovery code that never leaves it.",
+      "sha256": "d5461dc55537a5f4b86274449d6ad6b630f293fa3b28d0e158b178928ca795c6"
+    },
+    {
+      "id": "pinkerton-vault/package",
+      "path": "package.json",
+      "kind": "entrypoint",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "Node package metadata: scripts, version and engine.",
+      "sha256": "fc11497638540763eb356d8b002ee968a6d8778099e116b0033df4fca53be50c"
+    },
+    {
+      "id": "pinkerton-vault/reference",
+      "path": "reference/README.md",
+      "kind": "reference",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "implementer",
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "reference",
+        "javascript"
+      ],
+      "depends_on": [
+        "pinkerton-vault/spec/pkb1",
+        "pinkerton-vault/spec/verifier-v1",
+        "pinkerton-vault/spec/recovery-code"
+      ],
+      "summary": "Dependency-free reference implementation.",
+      "sha256": "bfc21db5dd08388dc9ecc875a8e38ee6a7978a57e739d66de4383cd7764c868b"
+    },
+    {
+      "id": "pinkerton-vault/reference/pkb1",
+      "path": "reference/pkb1.mjs",
+      "kind": "reference",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "Dependency-free reference implementation.",
+      "sha256": "9ef31172742308e8d6c3dd99ca5c94dbd3a9a222073d274d63f32e8151953d4a"
+    },
+    {
+      "id": "pinkerton-vault/reference/recovery",
+      "path": "reference/recovery.mjs",
+      "kind": "reference",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "Dependency-free reference implementation.",
+      "sha256": "1ff2b77c508f82d01e247dc62d185f8b9854aab63128b558e2d977f01786825f"
+    },
+    {
+      "id": "pinkerton-vault/reference/verifier",
+      "path": "reference/verifier.mjs",
+      "kind": "reference",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "Dependency-free reference implementation.",
+      "sha256": "0577c3de6b4560e4924ec52608a1f22f69b5af760c2799e8eb5257bcd9190935"
+    },
+    {
+      "id": "pinkerton-vault/schema/index.schema",
+      "path": "schema/index.schema.json",
+      "kind": "schema",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "JSON Schema: schema/index.schema.json",
+      "sha256": "58d6e9ec08a9cdb10c366660660109d0e36aeafa511418ba43b0c6805f157c87"
+    },
+    {
+      "id": "pinkerton-vault/schema/openapi",
+      "path": "schema/openapi.json",
+      "kind": "schema",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "OpenAPI 3.1 contract for the logical Vault API.",
+      "sha256": "f577fec5901c5198c35de7d4f6be8f32f5a387f6bac8a1c99d1c7ce95fa720a8"
+    },
+    {
+      "id": "pinkerton-vault/schema/pkb1.schema",
+      "path": "schema/pkb1.schema.json",
+      "kind": "schema",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "JSON Schema: schema/pkb1.schema.json",
+      "sha256": "e26580f264506c10623489e79637400af91a7242ee35f66f3d7536b76f73796e"
+    },
+    {
+      "id": "pinkerton-vault/schema/recovery-code.schema",
+      "path": "schema/recovery-code.schema.json",
+      "kind": "schema",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "JSON Schema: schema/recovery-code.schema.json",
+      "sha256": "06e61a199cd3a7457b7a3527aeba6f81e83c17f0037d47b23c20e56e1856f9f4"
+    },
+    {
+      "id": "pinkerton-vault/schema/verifier.schema",
+      "path": "schema/verifier.schema.json",
+      "kind": "schema",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "JSON Schema: schema/verifier.schema.json",
+      "sha256": "42989072c277e6ab678f72a26a749aecfa7db4a98bbf49d11be8b67d945f7423"
+    },
+    {
+      "id": "pinkerton-vault/spec/pkb1",
+      "path": "spec/pkb1.md",
+      "kind": "spec",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "implementer",
+        "auditor",
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "format",
+        "encryption",
+        "pkb1"
+      ],
+      "depends_on": [
+        "pinkerton-vault/spec/verifier-v1"
+      ],
+      "summary": "This document specifies the binary container that carries an encrypted Pinkerton workspace. It does not specify the application payload keys (they are listed in [../docs/data-map.md](../docs/data-map.md)) and it does not specify the server ",
+      "sha256": "7f582d0e1ac896465bd945a8a1bb9db32ccd65be0a2b9784bf84b4ff902244b6"
+    },
+    {
+      "id": "pinkerton-vault/spec/recovery-code",
+      "path": "spec/recovery-code.md",
+      "kind": "spec",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "implementer",
+        "human",
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "recovery",
+        "code",
+        "ux",
+        "migration"
+      ],
+      "depends_on": [
+        "pinkerton-vault/spec/verifier-v1",
+        "pinkerton-vault/spec/pkb1"
+      ],
+      "summary": "The recovery code is the only key. It is generated in the browser, shown to the user, and never sent to the server. Losing it means losing the memory and the balance; the server cannot help.",
+      "sha256": "dc8af2a2de44a7ad24cf699bdf64cf37e8d9cfecd8358bc9bb7b2f9636e6e417"
+    },
+    {
+      "id": "pinkerton-vault/spec/verifier-v1",
+      "path": "spec/verifier-v1.md",
+      "kind": "spec",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "implementer",
+        "auditor",
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [
+        "verifier",
+        "pbkdf2",
+        "authentication"
+      ],
+      "depends_on": [
+        "pinkerton-vault/spec/recovery-code"
+      ],
+      "summary": "The verifier lets the server identify a session without ever seeing the recovery code. It is a slow hash of the code, computed in the browser. The server stores it and uses it for login. It cannot derive the vault key from it.",
+      "sha256": "e3168d31f965223abaa7a8361c1124ddf26fb394693c7e13e8ed113bbfef1692"
+    },
+    {
+      "id": "pinkerton-vault/test-vectors/pkb1",
+      "path": "test-vectors/pkb1.json",
+      "kind": "test-vector",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "Deterministic conformance vectors.",
+      "sha256": "da4e6415eb61149072ee5f37aafefd559ac15c7cb6d11b675f32ac3d0823e4c1"
+    },
+    {
+      "id": "pinkerton-vault/test-vectors/recovery-code",
+      "path": "test-vectors/recovery-code.json",
+      "kind": "test-vector",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "Deterministic conformance vectors.",
+      "sha256": "96786aa6d3a23f6ffea0eeadb9ffa1e184ef5d35f416af9ccc8bc3aa53fd97a9"
+    },
+    {
+      "id": "pinkerton-vault/test-vectors/verifier",
+      "path": "test-vectors/verifier.json",
+      "kind": "test-vector",
+      "version": "1.0.0",
+      "status": "stable",
+      "audience": [
+        "agent"
+      ],
+      "updated": "2026-11-05",
+      "tags": [],
+      "depends_on": [],
+      "summary": "Deterministic conformance vectors.",
+      "sha256": "466de0cd21c9680b71f32d20c363fb340affcd17e7b4f61a257c03352f13536f"
+    }
+  ]
+}
