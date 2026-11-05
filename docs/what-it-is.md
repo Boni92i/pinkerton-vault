@@ -24,6 +24,11 @@ from a recovery code the server never sees.
 | Verifier v1 | A slow hash of the recovery code, sent to the server instead of the code | [`spec/verifier-v1.md`](../spec/verifier-v1.md) |
 | Recovery code | 12-symbol, 60-bit code the user owns; it is the key and the login | [`spec/recovery-code.md`](../spec/recovery-code.md) |
 
+The code is not a backup chore. It is a **function** — one code replaces an
+account, and the memory follows it to any browser — and it is the **proof**: the
+operator cannot decrypt the vault precisely because it never receives the code.
+Treat it as a capability the user holds, not a constraint imposed on them.
+
 ## Guarantees
 
 | Property | Guarantee | How it is enforced |

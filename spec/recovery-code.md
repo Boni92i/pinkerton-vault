@@ -1,6 +1,6 @@
 ---
 id: pinkerton-vault/spec/recovery-code
-version: 1.0.0
+version: 1.1.0
 status: stable
 audience: [implementer, human, agent]
 updated: 2026-11-05
@@ -13,6 +13,30 @@ depends_on: [pinkerton-vault/spec/verifier-v1, pinkerton-vault/spec/pkb1]
 The recovery code is the only key. It is generated in the browser, shown to the
 user, and never sent to the server. Losing it means losing the memory and the
 balance; the server cannot help.
+
+## 0. Principle — a function, not a burden
+
+The code is not a chore the user must endure. It is three things at once, and
+every surface that shows it MUST present them in this order:
+
+| Role | What it means for the user |
+|---|---|
+| **Function** | One code replaces an account: the session, the balance and the conversations follow the user to any browser. |
+| **Proof** | The server cannot open the vault because it does not have the code. If it could decrypt, it would not need to ask for one. |
+| **Confidentiality** | Nobody else holds it: not the operator, not the model provider, not a support desk. |
+
+Copy rules for a conforming implementation:
+
+- UI copy MUST present the code as a capability ("everything follows you"),
+  not as an obligation ("save it or lose everything").
+- The loss rule MAY be stated once, as a fact, as described in §5. It MUST NOT
+  be repeated as a threat on every screen, or used as the primary motivation.
+- The code SHOULD be shown when it becomes useful — after a purchase, when a
+  session holds something worth keeping — and on demand. Not as a recurring nag.
+- Delivery (§6) is a convenience. Possession MUST NOT depend on any delivery
+  channel, and no channel may send the code through the operator.
+- An incentive to keep the code MAY be offered. It MUST NOT imply that the
+  operator holds a copy, or that support can restore a lost code.
 
 ## 1. Format
 
@@ -61,10 +85,14 @@ forbidden.
 
 - The browser displays the code to the user. The user copies it.
 - The browser stores it in IndexedDB (`pinkerton-recovery`) with a localStorage
-  fallback. The server never stores or returns it.
+  fallback. The server never stores or returns it. The local copy is stored
+  as-is: it is not encrypted at rest, and the limits are those of the browser
+  profile (see [`../docs/threat-model.md`](../docs/threat-model.md)). UI copy
+  MUST NOT claim that the local copy is encrypted.
 - The app SHOULD offer a browser password-manager save (Web Credential
   Management) and a recovery kit.
-- The code is a bearer secret. The UI MUST say so.
+- The code is a bearer secret. The UI MUST say so, in plain words, once — not as
+  a scare banner on every visit.
 
 ## 5. Loss
 
@@ -72,7 +100,14 @@ There is no recovery, by design. No email reset, no support override, no server
 copy. This is the cost of possession and the proof that the server cannot read the
 vault.
 
+An implementation MUST state this fact plainly, once. It MUST NOT turn it into a
+recurring warning: the absence of a server copy is the guarantee, not a defect of
+the product.
+
 ## 6. Delivery options
+
+Delivery is a convenience, never a dependency. An implementation MUST work, and
+the vault MUST remain readable, when no delivery channel is used at all.
 
 All options below keep the plaintext code out of Pinkerton's infrastructure. A
 server-side send (email, WhatsApp, Discord) would put the code in the server and

@@ -28,6 +28,10 @@ normative spec for the task. Do not start from the README prose if a spec exists
 - Use RFC 2119 keywords as defined in the spec (`MUST`, `SHOULD`, `MAY`, `MUST NOT`).
 - Do not assume the server can decrypt the vault. For v1, it cannot: it stores
   ciphertext and a verifier, never the code.
+- Do not frame the recovery code as a burden. It is a function (the memory is
+  portable without an account), a proof (the server cannot decrypt, because it
+  never receives the code) and a confidentiality boundary. See
+  [`spec/recovery-code.md`](spec/recovery-code.md) §0.
 - Do not call the scheme "zero-knowledge" without the caveats in
   [`docs/threat-model.md`](docs/threat-model.md).
 - Do not generate a real user's code, vault or key in an example. Use

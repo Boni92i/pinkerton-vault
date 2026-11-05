@@ -19,7 +19,7 @@ prose, and the test vectors over both.
 
 - [spec/pkb1.md](https://github.com/Boni92i/pinkerton-vault/blob/main/spec/pkb1.md): binary layout, key derivation, compression, sync link, versioning.
 - [spec/verifier-v1.md](https://github.com/Boni92i/pinkerton-vault/blob/main/spec/verifier-v1.md): PBKDF2 verifier, storage, login, threat limits.
-- [spec/recovery-code.md](https://github.com/Boni92i/pinkerton-vault/blob/main/spec/recovery-code.md): alphabet, generation, normalization, display, loss, delivery.
+- [spec/recovery-code.md](https://github.com/Boni92i/pinkerton-vault/blob/main/spec/recovery-code.md): §0 principle (function, proof, confidentiality), alphabet, generation, normalization, display, loss, delivery.
 
 ## Machine-readable contracts
 

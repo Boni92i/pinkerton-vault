@@ -9,6 +9,23 @@ tags: [changelog]
 
 # Changelog
 
+## 1.1.0 — 2026-11-05
+
+### Added
+
+- `spec/recovery-code.md` §0: the code is a function (portability), a proof (the
+  server cannot decrypt) and a confidentiality boundary. Normative copy rules:
+  no fear framing, no recurring nag, no server-side delivery.
+
+### Changed
+
+- `spec/recovery-code.md` §4, §5, §6: the code is presented as a capability, the
+  loss rule is stated once and calmly, and delivery is convenience, never a
+  dependency. The local copy is documented as not encrypted at rest, so UI copy
+  must not claim otherwise.
+- `docs/what-it-is.md`: the code is described as the proof, not only the key.
+- `AGENTS.md`: rule against framing the code as a burden.
+
 ## 1.0.0 — 2026-11-05
 
 ### Added

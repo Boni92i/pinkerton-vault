@@ -24,7 +24,7 @@
       ],
       "depends_on": [],
       "summary": "Read [llms.txt](llms.txt) first. Then [index.json](index.json). Then the normative spec for the task. Do not start from the README prose if a spec exists.",
-      "sha256": "4a47f7ae37be8008b7cb89798bf125b9f55543d3d77e44e32941d6a03b7ebaf9"
+      "sha256": "591e38df98e3fd60013f0b88bae68b6e4325e9b8416d18c89bcfe7b59e8852d2"
     },
     {
       "id": "pinkerton-vault/changelog",
@@ -41,8 +41,8 @@
         "changelog"
       ],
       "depends_on": [],
-      "summary": "PKB1 format specification and JSON Schema.",
-      "sha256": "0e441324adbe281a65fad62c104433a20694a21a2ebf3dbf492a73185a8cab13"
+      "summary": "spec/recovery-code.md §0: the code is a function (portability), a proof (the server cannot decrypt) and a confidentiality boundary. Normative copy rules: no fear framing, no recurring nag, no server-side delivery.",
+      "sha256": "361f5144edf2ddcfe0c225253b71e9fb8be561650dc73fa9d6477136cfb5661b"
     },
     {
       "id": "pinkerton-vault/CITATION",
@@ -263,7 +263,7 @@
         "pinkerton-vault/spec/verifier-v1"
       ],
       "summary": "A portable, client-encrypted memory for AI sessions: the user's browser packs and encrypts the workspace, the server stores opaque bytes, and the key is derived from a recovery code the server never sees.",
-      "sha256": "686644a596ece3145654cfcc3e041d64e14f64d2fcdbbe49fc88b5e22ed31229"
+      "sha256": "3ce1279ff7a2679ea38aeb33462bb505073676bcd58bdbcea9021695fb88e1fe"
     },
     {
       "id": "pinkerton-vault/examples",
@@ -353,7 +353,7 @@
       "tags": [],
       "depends_on": [],
       "summary": "A portable, client-encrypted memory format for AI sessions. The server stores opaque bytes; the key is derived in the browser from a recovery code that never leaves it.",
-      "sha256": "d5461dc55537a5f4b86274449d6ad6b630f293fa3b28d0e158b178928ca795c6"
+      "sha256": "732a908aa4090d18ddf25be44a4266dff263f08ecc600f3ded487324282ffc51"
     },
     {
       "id": "pinkerton-vault/package",
@@ -540,7 +540,7 @@
       "id": "pinkerton-vault/spec/recovery-code",
       "path": "spec/recovery-code.md",
       "kind": "spec",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "stable",
       "audience": [
         "implementer",
@@ -559,7 +559,7 @@
         "pinkerton-vault/spec/pkb1"
       ],
       "summary": "The recovery code is the only key. It is generated in the browser, shown to the user, and never sent to the server. Losing it means losing the memory and the balance; the server cannot help.",
-      "sha256": "dc8af2a2de44a7ad24cf699bdf64cf37e8d9cfecd8358bc9bb7b2f9636e6e417"
+      "sha256": "985d6b0555964b88322013b862454fd4b37654fdde837085bae953c7e6174a6e"
     },
     {
       "id": "pinkerton-vault/spec/verifier-v1",
